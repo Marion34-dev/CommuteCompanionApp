@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Commute Companion</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+<header>
+    <h1>Welcome to the Your Commute Companion App!</h1>
+</header>
+
+<div class="station">
+    <label for="stationSelect">Select a Station:</label>
+    <select id="stationSelect" name="station">
+        <option th:each="station : ${stations}" th:value="${station.value}" th:text="${station.label}"></option>
+    </select>
+</form>
+
+<div id="selectedValueDisplay"></div>
+</div>
+
+<script th:inline="javascript">
+    // So the following is interpreted as raw data and not as markup
+    /*<![CDATA[*/
+
+    // Event listener to HTML element with id 'stationSelect'
+    document.getElementById('stationSelect').addEventListener('change', function() {
+
+        // Get the selected value when the 'change' event occurs
+        var selectedValue = this.value;
+
+        // Redirect the user to the displayInfo route with the selected station parameter
+        window.location.href = '/displayInfo?station=' + selectedValue;
+
+         // Alternative approach using AJAX with jQuery
+        // Make a GET request to '/displayInfo' with the selectedValue as a parameter
+        /*
+        $.get('/displayInfo', { station: selectedValue }, function(data) {
+
+            // Update the content of an element with id 'resultContainer' with the received data
+            $('#resultContainer').html(data);
+        });
+        */
+    });
+    /*]]>*/
+</script>
+
+<footer>
+    Your Commute Companion&copy; 2024
+</footer>
+</body>
+</html>
