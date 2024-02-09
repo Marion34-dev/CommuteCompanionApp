@@ -34,3 +34,4 @@ build/
 
 bus.csv
 stationCodes.csv
+application.properties
