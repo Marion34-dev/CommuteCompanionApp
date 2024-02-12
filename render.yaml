@@ -1,0 +1,7 @@
+services:
+  - name: commuting-app
+    env:
+      - key: JAVA_TOOL_OPTIONS
+        value: "-Xms512m -Xmx1024m"
+    buildCommand: mvn clean package
+    startCommand: java -jar target/app-0.0.1-SNAPSHOT.jar
