@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your commute Companion</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+<header>
+    <h1>Welcome to the Your Commute Companion App!</h1>
+</header>
+
+<div class="dataReceived">
+<h1>Latest Information: </h1>
+<ul th:each="arrivalInfo : ${arrivalInfoList}">
+    <li>
+        <strong> <span th:text="${arrivalInfo.lineName}"></span></strong>
+        : <strong><span th:text="${arrivalInfo.modeName}"></span></strong>
+        - <strong>Destination: </strong><span th:text="${arrivalInfo.destinationName}"></span>
+        - <strong>Expected in: </strong><span th:if="${arrivalInfo.timeToStationDisplay ne 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay} + ' minutes'"></span>
+        <span th:if="${arrivalInfo.timeToStationDisplay eq 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay}"></span>
+        - <strong>Expected Arrival: </strong><span th:text="${#temporals.format(arrivalInfo.expectedArrivalTime, 'HH:mm')}"></span>
+    </li>
+</ul>
+</div>
+<div class="return-button">
+    <a href="/">Back</a>
+</div>
+
+<footer>
+    Your Commute Companion&copy; 2024
+</footer>
+
+</body>
+</html>

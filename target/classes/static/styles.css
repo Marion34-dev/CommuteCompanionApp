@@ -1,0 +1,70 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #d0f0c0;
+    color: black;
+    margin: 20px 0 20px;
+    padding: 60px 0 20px;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+form {
+    margin: 20px auto;
+}
+
+.footer-container {
+    padding-top: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.station {
+    margin: 100px auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dataReceived {
+    text-align: left;
+    padding: 10px;
+}
+
+.return-button {
+    margin-top: 20px;
+}
+
+.return-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.return-button a:hover {
+   background-color: #555;
+}
