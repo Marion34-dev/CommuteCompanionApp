@@ -6,16 +6,9 @@ if ! type java >/dev/null 2>&1; then
     apt-get install -y openjdk-11-jdk
 fi
 
-# Check if Maven is installed
+# Install Maven if necessary
 if ! type mvn >/dev/null 2>&1; then
-    # Download Maven
-    curl -O https://apache.osuosl.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
-
-    # Extract Maven
-    tar -xzf apache-maven-3.8.4-bin.tar.gz
-
-    # Add Maven to PATH
-    export PATH=$PWD/apache-maven-3.8.4/bin:$PATH
+    apt-get install -y maven
 fi
 
 # Run Maven build
