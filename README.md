@@ -1,5 +1,7 @@
 # Welcome to Your Commute Companion App!
 
+## The app has been deployed here: https://commute-app.onrender.com (Please note it will spin down with inactivity so please be patient).
+
 After completing the Fundamentals of Sustainability and Technology course from IBM, I decided to create 
 a program that promotes the use of public transport. This Java program makes an API call to the 
 Transport For London (TFL) website.
