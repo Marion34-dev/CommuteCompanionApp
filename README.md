@@ -34,6 +34,7 @@ This Java program uses Springboot and a Tomcat server.
 The TFL website requires the Naptan code of a station in order to return the relevant information.
 To do this, the program reads the input from the user (the desired station), retrieves the corresponding 
 Naptan code from the CSV file and uses it in its API call.
+It has been deployed on Render from a base image created by DockerHub.
 
 ## Special note
 Please wait at least 10 seconds before selecting a second station.
