@@ -23,9 +23,12 @@ public class ApiCall {
     @Value("${api.key}")
     private String apiKey;
 
+    @Value("${api.url}")
+    private String apiUrl;
+
     @GetMapping("/displayInfo")
     public String displayInfo(@RequestParam("station") String selectedStation, Model model) {
-        String apiUrl = "https://api.tfl.gov.uk/StopPoint/" + selectedStation + "/Arrivals";
+        String fullApiUrl = apiUrl + selectedStation + "/Arrivals";
 
         // Setting up HTTP headers with the API key (secure way of authenticating API call)
         HttpHeaders headers = new HttpHeaders();
@@ -36,7 +39,7 @@ public class ApiCall {
         RestTemplate restTemplate = new RestTemplate();
 
         // Making an API call with the headers to get JSON data
-        String jsonData = restTemplate.getForObject(apiUrl, String.class);
+        String jsonData = restTemplate.getForObject(fullApiUrl, String.class);
 
         // Processing the JSON data and extract information
         List<ArrivalInfo> arrivalInfoList = parseJson(jsonData);
