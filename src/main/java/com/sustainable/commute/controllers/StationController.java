@@ -1,5 +1,6 @@
-package com.sustainable.commute;
+package com.sustainable.commute.controllers;
 
+import com.sustainable.commute.models.Station;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

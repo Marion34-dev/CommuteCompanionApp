@@ -1,7 +1,7 @@
-package com.sustainable.commute;
+package com.sustainable.commute.controllers;
 
+import com.sustainable.commute.services.ArrivalInfo;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;

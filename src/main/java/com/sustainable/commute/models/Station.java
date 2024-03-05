@@ -1,4 +1,4 @@
-package com.sustainable.commute;
+package com.sustainable.commute.models;
 
 // Blueprint used in StationController
 public class Station {

@@ -1,4 +1,4 @@
-package com.sustainable.commute;
+package com.sustainable.commute.services;
 
 import java.time.Instant;
 

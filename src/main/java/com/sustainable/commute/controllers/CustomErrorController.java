@@ -1,4 +1,4 @@
-package com.sustainable.commute;
+package com.sustainable.commute.controllers;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
