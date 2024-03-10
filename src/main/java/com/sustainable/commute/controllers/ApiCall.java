@@ -30,6 +30,7 @@ public class ApiCall {
     public String displayInfo(@RequestParam("station") String selectedStation, Model model) {
         String fullApiUrl = apiUrl + selectedStation + "/Arrivals";
 
+
         // Setting up HTTP headers with the API key (secure way of authenticating API call)
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + apiKey);
@@ -54,7 +55,7 @@ public class ApiCall {
     }
 
     // Create a new list to store ArrivalInfo objects parsed from JSON
-    private List<ArrivalInfo> parseJson(String jsonData) {
+    public List<ArrivalInfo> parseJson(String jsonData) {
         List<ArrivalInfo> arrivalInfoList = new ArrayList<>();
 
         try {

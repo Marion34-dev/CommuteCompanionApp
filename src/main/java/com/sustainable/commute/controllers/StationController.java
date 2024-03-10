@@ -29,7 +29,7 @@ public class StationController {
         return "stationSelector";
     }
 
-    private List<Station> readCsvData() {
+    List<Station> readCsvData() {
         List<Station> stations = new ArrayList<>();
         try {
             ClassPathResource resource = new ClassPathResource("stations.csv");
