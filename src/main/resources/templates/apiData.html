@@ -9,7 +9,7 @@
 
 <body>
 <header>
-    <h1>Welcome to the Your Commute Companion App!</h1>
+    <h1>Welcome to Your Commute Companion App!</h1>
 </header>
 
 <div class="dataReceived">
@@ -21,7 +21,7 @@
         - <strong>Destination: </strong><span th:text="${arrivalInfo.destinationName}"></span>
         - <strong>Expected in: </strong><span th:if="${arrivalInfo.timeToStationDisplay ne 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay} + ' minutes'"></span>
         <span th:if="${arrivalInfo.timeToStationDisplay eq 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay}"></span>
-        - <strong>Expected Arrival: </strong><span th:text="${#temporals.format(arrivalInfo.expectedArrivalTime, 'HH:mm')}"></span>
+<!--        - <strong>Expected Arrival: </strong><span th:text="${#temporals.format(arrivalInfo.expectedArrivalTime, 'HH:mm')}"></span>-->
     </li>
 </ul>
 </div>

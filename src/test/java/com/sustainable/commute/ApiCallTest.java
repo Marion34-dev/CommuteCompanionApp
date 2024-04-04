@@ -25,7 +25,10 @@ public class ApiCallTest {
 
         // Then
         assertEquals(1, arrivalInfoList.size());
-        assertEquals("TestLine", arrivalInfoList.get(0).getLineName());
-        assertEquals("TestPlatform", arrivalInfoList.get(0).getPlatformName());
+        ArrivalInfo arrivalInfo = arrivalInfoList.get(0);
+        assertEquals("TestLine", arrivalInfo.getLineName());
+        assertEquals("TestPlatform", arrivalInfo.getPlatformName());
+        assertEquals("TestDestination", arrivalInfo.getDestinationName());
+        assertEquals("TestMode", arrivalInfo.getModeName());
     }
 }

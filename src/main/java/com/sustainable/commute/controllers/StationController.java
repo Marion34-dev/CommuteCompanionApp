@@ -34,7 +34,7 @@ public class StationController {
         try {
             ClassPathResource resource = new ClassPathResource("stations.csv");
             InputStream inputStream = resource.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)); //
 
             String line;
             while ((line = reader.readLine()) != null) {
