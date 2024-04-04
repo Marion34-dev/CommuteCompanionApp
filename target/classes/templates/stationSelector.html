@@ -1,55 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Commute Companion</title>
+    <title>Your Commute Companion!</title>
     <link rel="stylesheet" type="text/css" href="/styles.css">
+    <style>
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .station {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .station label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .station select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 <header>
-    <h1>Welcome to the Your Commute Companion App!</h1>
+    <h1>Your Commute Companion!</h1>
 </header>
 
-<div class="station">
-    <label for="stationSelect">Select a Station:</label>
-    <select id="stationSelect" name="station">
-        <option th:each="station : ${stations}" th:value="${station.value}" th:text="${station.label}"></option>
-    </select>
-</form>
+<div class="container">
+    <div id="selectedValueDisplay"></div>
 
-<div id="selectedValueDisplay"></div>
+    <div class="station">
+        <label for="stationSelect">Select a Station:</label>
+        <select id="stationSelect" name="station">
+            <option th:each="station : ${stations}" th:value="${station.value}" th:text="${station.label}"></option>
+        </select>
+    </div>
 </div>
 
-<script th:inline="javascript">
-    // So the following is interpreted as raw data and not as markup
-    /*<![CDATA[*/
-
-    // Event listener to HTML element with id 'stationSelect'
-    document.getElementById('stationSelect').addEventListener('change', function() {
-
-        // Get the selected value when the 'change' event occurs
-        var selectedValue = this.value;
-
-        // Redirect the user to the displayInfo route with the selected station parameter
-        window.location.href = '/displayInfo?station=' + selectedValue;
-
-         // Alternative approach using AJAX with jQuery
-        // Make a GET request to '/displayInfo' with the selectedValue as a parameter
-        /*
-        $.get('/displayInfo', { station: selectedValue }, function(data) {
-
-            // Update the content of an element with id 'resultContainer' with the received data
-            $('#resultContainer').html(data);
-        });
-        */
-    });
-    /*]]>*/
-</script>
-
 <footer>
-    Your Commute Companion&copy; 2024
+    Your Commute Companion &copy; 2024
 </footer>
+
+<script th:inline="javascript">
+// So the following is interpreted as raw data and not as markup
+/*<![CDATA[*/
+
+// Event listener to HTML element with id 'stationSelect'
+document.getElementById('stationSelect').addEventListener('change', function() {
+// Get the selected value when the 'change' event occurs
+var selectedValue = this.value;
+
+// Redirect the user to the displayInfo route with the selected station parameter
+window.location.href = '/displayInfo?station=' + selectedValue;
+
+// Alternative approach using AJAX with jQuery
+// Make a GET request to '/displayInfo' with the selectedValue as a parameter
+/*
+$.get('/displayInfo', { station: selectedValue }, function(data) {
+
+// Update the content of an element with id 'resultContainer' with the received data
+$('#resultContainer').html(data);
+});
+*/
+});
+/*]]>*/
+
+</script>
 </body>
 </html>
