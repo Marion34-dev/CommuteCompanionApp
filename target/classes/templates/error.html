@@ -4,7 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your commute Companion!</title>
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <style>
+        /* Reset styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        .station {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .station h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .station p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .return-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .return-button a {
+            background-color: #007bff; /* Blue button background */
+            color: #fff; /* White text */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .return-button a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+         footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,19 +86,17 @@
     <h1>Your Commute Companion!</h1>
 </header>
 
-<body>
 <div class="station">
-<h1>An error has occurred</h1>
-<p>Please try again later or try another station.</p>
+    <h1>An error has occurred</h1>
+    <p>Please try again later or try another station.</p>
 
-<div class="return-button">
-    <a href="/">Back</a>
-</div>
+    <div class="return-button">
+        <a href="/">Back</a>
+    </div>
 </div>
 
 <footer>
     Your Commute Companion&copy; 2024
 </footer>
-
 </body>
 </html>

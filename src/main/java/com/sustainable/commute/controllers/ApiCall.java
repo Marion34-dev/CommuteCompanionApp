@@ -30,7 +30,6 @@ public class ApiCall {
     public String displayInfo(@RequestParam("station") String selectedStation, Model model) {
         String fullApiUrl = apiUrl + selectedStation + "/Arrivals";
 
-
         // Setting up HTTP headers with the API key (secure way of authenticating API call)
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + apiKey);
@@ -45,8 +44,11 @@ public class ApiCall {
         // Processing the JSON data and extract information
         List<ArrivalInfo> arrivalInfoList = parseJson(jsonData);
 
-        // Sorting the list based on timeToStationMinutes
-        arrivalInfoList.sort(Comparator.comparingInt(ArrivalInfo::getTimeToStationMinutes));
+        // Sorting the list based on destinationName and then timeToStationMinutes
+        arrivalInfoList.sort(
+                Comparator.comparing(ArrivalInfo::getDestinationName)
+                        .thenComparing(Comparator.comparingInt(ArrivalInfo::getTimeToStationMinutes))
+        );
 
         // Adding relevant information to the Thymeleaf model
         model.addAttribute("arrivalInfoList", arrivalInfoList);
@@ -71,7 +73,6 @@ public class ApiCall {
                 arrivalInfo.setPlatformName(arrivalNode.get("platformName").asText());
                 arrivalInfo.setTimeToStationMinutes(arrivalNode.get("timeToStation").asInt() / 60);
                 arrivalInfo.setExpectedArrivalTime(Instant.parse(arrivalNode.get("expectedArrival").asText()));
-
                 arrivalInfo.setDestinationName(arrivalNode.get("destinationName").asText());
                 arrivalInfo.setModeName(arrivalNode.get("modeName").asText());
 

@@ -3,8 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your commute Companion!</title>
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>Your Commute Companion!</title>
+    <style>
+        /* Reset styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .dataReceived {
+            margin: 20px 0;
+        }
+
+        .dataReceived h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .dataReceived ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .dataReceived li {
+            margin-bottom: 15px;
+        }
+
+        .dataReceived li strong {
+            color: #007bff;
+        }
+
+        .return-button {
+            text-align: center;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 60px; /* Adjust bottom spacing as needed */
+            left: 80%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            z-index: 999; /* Ensure the button is above other elements */
+        }
+
+        .return-button a {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .return-button a:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -12,19 +117,26 @@
     <h1>Your Commute Companion!</h1>
 </header>
 
-<div class="dataReceived">
-<h1>Latest Information: </h1>
-<ul th:each="arrivalInfo : ${arrivalInfoList}">
-    <li>
-        <strong> <span th:text="${arrivalInfo.lineName}"></span></strong>
-        : <strong><span th:text="${arrivalInfo.modeName}"></span></strong>
-        - <strong>Destination: </strong><span th:text="${arrivalInfo.destinationName}"></span>
-        - <strong>Expected in: </strong><span th:if="${arrivalInfo.timeToStationDisplay ne 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay} + ' minutes'"></span>
-        <span th:if="${arrivalInfo.timeToStationDisplay eq 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay}"></span>
-<!--        - <strong>Expected Arrival: </strong><span th:text="${#temporals.format(arrivalInfo.expectedArrivalTime, 'HH:mm')}"></span>-->
-    </li>
-</ul>
+<div class="container">
+    <div class="dataReceived">
+        <h1>Latest Information: </h1>
+        <ul th:each="arrivalInfo, iterStat : ${arrivalInfoList}">
+            <li>
+                <!-- Check if it's the first item or if the destinationName changes -->
+                <th:block th:if="${iterStat.index == 0 or arrivalInfo.destinationName != arrivalInfoList[iterStat.index - 1].destinationName}">
+                    <hr>
+                </th:block>
+                <!-- Display arrival information -->
+                <strong><span th:text="${arrivalInfo.lineName}"></span></strong>
+                : <strong><span th:text="${arrivalInfo.modeName}"></span></strong>
+                - <strong>Destination: </strong><span th:text="${arrivalInfo.destinationName}"></span>
+                - <strong>Expected in: </strong><span th:if="${arrivalInfo.timeToStationDisplay ne 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay} + ' minutes'"></span>
+                <span th:if="${arrivalInfo.timeToStationDisplay eq 'arrived'}" th:text="${arrivalInfo.timeToStationDisplay}"></span>
+            </li>
+        </ul>
+    </div>
 </div>
+
 <div class="return-button">
     <a href="/">Back</a>
 </div>
